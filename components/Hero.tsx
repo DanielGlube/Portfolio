@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
               McMaster Life Science III — <span className="text-slate-900 dark:text-white font-medium">Sensory Motor Systems</span>
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-xl leading-relaxed transition-colors duration-300">
-              Specializing in neuroscience and sensory motor systems. Exploring how we experience the world and how our brains adapt to those experiences.
+              Specializing in neuroscience and sensory motor systems. Interested in how we experience the world and how our brains adapt to those experiences.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">

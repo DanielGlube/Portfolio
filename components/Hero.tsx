@@ -31,8 +31,8 @@ export const Hero: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="#experience"
-                onClick={(e) => handleScroll(e, '#experience')}
+                href="#portfolio"
+                onClick={(e) => handleScroll(e, '#portfolio')}
                 className="px-8 py-4 bg-navy-900 dark:bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors text-center cursor-pointer"
               >
                 View Work

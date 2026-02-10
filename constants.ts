@@ -3,9 +3,9 @@ import { ExperienceItem, Publication, SkillCategory } from './types.ts';
 export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Portfolio', href: '#portfolio' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Portfolio', href: '#portfolio' },
 ];
 
 export const EXPERIENCES: ExperienceItem[] = [

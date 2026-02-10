@@ -15,9 +15,9 @@ const App: React.FC = () => {
       <main className="flex-grow">
         <Hero />
         <About />
+        <Portfolio />
         <Experience />
         <Skills />
-        <Portfolio />
         <Contact />
       </main>
       <Footer />

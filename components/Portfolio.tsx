@@ -3,7 +3,7 @@ import { PUBLICATIONS } from '../constants.ts';
 
 export const Portfolio: React.FC = () => {
   return (
-    <section id="portfolio" className="py-24 bg-navy-900 text-white scroll-mt-24">
+    <section id="portfolio" className="py-12 bg-navy-900 text-white scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>

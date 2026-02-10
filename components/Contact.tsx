@@ -21,6 +21,9 @@ export const Contact: React.FC = () => {
   const gameLoopRef = useRef<number | null>(null);
   const scoreRef = useRef(0);
   
+  // Touch State Refs
+  const touchStartRef = useRef<{x: number, y: number} | null>(null);
+  
   // Audio Context Ref
   const audioContextRef = useRef<AudioContext | null>(null);
 
@@ -214,6 +217,37 @@ export const Contact: React.FC = () => {
     drawGame();
   };
 
+  // Touch Handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (gameState !== 'PLAYING') return;
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (gameState !== 'PLAYING' || !touchStartRef.current) return;
+    
+    const touch = e.changedTouches[0];
+    const diffX = touch.clientX - touchStartRef.current.x;
+    const diffY = touch.clientY - touchStartRef.current.y;
+    
+    touchStartRef.current = null;
+
+    if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) return; // Ignore small taps
+
+    const current = directionRef.current;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        // Horizontal
+        if (diffX > 0 && current.x === 0) nextDirectionRef.current = { x: 1, y: 0 };
+        else if (diffX < 0 && current.x === 0) nextDirectionRef.current = { x: -1, y: 0 };
+    } else {
+        // Vertical
+        if (diffY > 0 && current.y === 0) nextDirectionRef.current = { x: 0, y: 1 };
+        else if (diffY < 0 && current.y === 0) nextDirectionRef.current = { x: 0, y: -1 };
+    }
+  };
+
   // Keyboard Controls
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -303,7 +337,7 @@ export const Contact: React.FC = () => {
                 {/* Snake Game Section */}
                 <div className="mt-8 pt-8 border-t border-navy-800 w-full flex flex-col items-center">
                     <div className="flex justify-between items-center w-full max-w-[320px] mb-4 text-sm">
-                         <span className="text-slate-400 font-medium">Use Arrows to Play</span>
+                         <span className="text-slate-400 font-medium">Use Arrows or Swipe to Play</span>
                          <div className="text-blue-400 font-bold">
                             Score: <span className="text-white">{score}</span>
                             {(highScore > 0 || score > 0) && <span className="text-slate-500 ml-2 text-xs">Best: {Math.max(highScore, score)}</span>}
@@ -315,7 +349,10 @@ export const Contact: React.FC = () => {
                             ref={canvasRef}
                             width={GRID_WIDTH * CELL_SIZE}
                             height={GRID_HEIGHT * CELL_SIZE}
-                            className="block bg-slate-950 cursor-pointer"
+                            className="block bg-slate-950 cursor-pointer touch-none"
+                            style={{ touchAction: 'none' }}
+                            onTouchStart={handleTouchStart}
+                            onTouchEnd={handleTouchEnd}
                         />
                         
                         {/* Overlay for Game States */}

@@ -148,7 +148,7 @@ export const PUBLICATIONS: Publication[] = [
     description: 'How can we accelerate scientific breakthroughs and make research more cost-effective? A key answer lies in Open Science, which aims to share participant data and results with other scientists, allowing the data to be used with new intentions.',
     role: 'Concordia University',
     link: 'https://www.linkedin.com/feed/update/urn:li:activity:7366838301091078144/',
-    image: 'images/poster.jpg'
+    image: 'https://i.ibb.co/kg85KJ8C/IMG-20251009-130647-01.jpg'
   }
 ];
 

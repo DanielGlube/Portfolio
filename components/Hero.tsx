@@ -57,7 +57,7 @@ export const Hero: React.FC = () => {
               {/* Main Image Container */}
               <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-700 bg-slate-200 dark:bg-slate-800 transition-colors duration-300">
                 <img 
-                  src="https://i.ibb.co/5XdVz5VD/Solo-Amazingness-Daniel-Glube.png" 
+                  src="images/profile.png" 
                   alt="Daniel Glube" 
                   className="w-full h-full object-cover object-[50%_25%]"
                 />
